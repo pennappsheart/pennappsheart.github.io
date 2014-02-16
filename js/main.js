@@ -1,42 +1,18 @@
 var table_string = "<div id='pic_table'>";
 
 $(function() {
-    var num_rows = 26;
-    var num_cols = 26;
-    var need_extra = false;
     var total_users = window.users.length;
 
-    for(var i = 0; i < num_rows; i++)
+    for(var i = 0; i < total_users + 40; i++)
     {
-//        table_string += "<tr>";
-        for(var j = 0; j < num_cols; j++)
-        {
-            user = (i*num_cols) + j;
-            if (user >= total_users){
-              //need to fill our matrix with extra values to make it squared
-              need_extra = true;
-              break;
-            }
-            u = window.users[user];
-            console.log(u)
-            printImage(u.uid);
+        user = i;
+        if(user >= total_users){
+          user = Math.floor((Math.random()*100));
         }
-  //      table_string += "</tr>";
+        u = window.users[user];
+        console.log(u)
+        printImage(u.uid);
     }
-
-    if(need_extra){
-        var copy;
-        var index=0;
-
-        for(copy = (i*num_cols) + j; copy<total_users; copy++){
-            index = Math.floor((Math.random()*num_cols)+1);
-            u = window.users[index];
-            console.log(u);
-            printImage(u.uid);
-        }
-    }
-
-    table_string += "</table>";
 
     $('body').prepend(table_string);
 
