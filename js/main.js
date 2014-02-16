@@ -1,31 +1,43 @@
-$(function() {
+var table_string = "<div id='pic_table'>";
 
+$(function() {
     var num_rows = 26;
     var num_cols = 26;
-    var table_string = "<table id='pic_table'><thead></thead>";
+    var need_extra = false;
+    var total_users = window.users.length;
 
     for(var i = 0; i < num_rows; i++)
     {
-        table_string += "<tr>";
+//        table_string += "<tr>";
         for(var j = 0; j < num_cols; j++)
         {
             user = (i*num_cols) + j;
-            if (user >= window.users.length) break;
+            if (user >= total_users){
+              //need to fill our matrix with extra values to make it squared
+              need_extra = true;
+              break;
+            }
             u = window.users[user];
             console.log(u)
-            table_string += "<td>";
-            table_string += "<img src='scraped_pics/"+u.uid+".jpg'>";
-            table_string += "</td>"
+            printImage(u.uid);
         }
-        table_string += "</tr>";
+  //      table_string += "</tr>";
     }
+
+    if(need_extra){
+        var copy;
+        var index=0;
+
+        for(copy = (i*num_cols) + j; copy<total_users; copy++){
+            index = Math.floor((Math.random()*num_cols)+1);
+            u = window.users[index];
+            console.log(u);
+            printImage(u.uid);
+        }
+    }
+
     table_string += "</table>";
 
-    var image_width = $('#heart_img')[0].width;
-    var image_height = $('#heart_img')[0].height;
-
-    $('#pic_table').width = image_width;
-    $('#pic_table').height = image_height;
     $('body').prepend(table_string);
 
   $(document).click(function(e) {
@@ -38,3 +50,10 @@ $(function() {
      console.log(pixelData);
   });
 });
+
+
+function printImage(id){
+  table_string += "<div class='crop'>";
+  table_string += "<img class='tint' src='scraped_pics/"+id+".jpg'>";
+  table_string += "</div>"
+}

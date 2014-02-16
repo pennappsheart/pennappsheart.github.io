@@ -1,9 +1,43 @@
+body {
+	padding: 0px;
+	margin: 0px;
+}
+
 .centered {
   margin: 0 auto;
   display: block;
   text-align: center;
 }
 
-#pic_table {
-	width: 100%;
+table {
+  border-spacing: 0px;
+}
+
+img {
+  position: absolute;
+  left: -100%;
+  right: -100%;
+  top: -100%;
+  bottom: -100%;
+  margin: auto;
+  min-height: 100%;
+  min-width: 100%;
+}
+
+.crop {
+  width: 33px;
+  height: 56px;
+  overflow: hidden;
+  margin: auto;
+  position: relative;
+  float: left;
+}
+
+.tint {
+	box-shadow: 0px 313px rgba(255, 0, 92, 0.6) inset
+}
+
+#heart_img {
+  opacity: 0.27;
+  max-width: 60%;
 }
