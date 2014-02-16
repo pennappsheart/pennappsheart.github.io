@@ -1,5 +1,4 @@
 $(function() {
-    
     var num_rows = 26;
     var num_cols = 26;
     var table_string = "<div id='pic_table'>";
@@ -14,7 +13,7 @@ $(function() {
             u = window.users[user];
             console.log(u)
             table_string += "<div class='crop'>";
-            table_string += "<img src='scraped_pics/"+u.uid+".jpg'>";
+            table_string += "<img class='tint' src='scraped_pics/"+u.uid+".jpg'>";
             table_string += "</div>"
         }
   //      table_string += "</tr>";
