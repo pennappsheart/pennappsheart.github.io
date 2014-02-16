@@ -1,21 +1,26 @@
 $(function() {
-        var num_rows = 26;
-        var num_cols = 26;
-        var table_string = "<table id='pic_table'><thead></thead>";
+    
+    var num_rows = 26;
+    var num_cols = 26;
+    var table_string = "<table id='pic_table'><thead></thead>";
 
-        for(var i = 0; i < num_rows; i++)
+    for(var i = 0; i < num_rows; i++)
+    {
+        table_string += "<tr>";
+        for(var j = 0; j < num_cols; j++)
         {
-            table_string += "<tr>";
-            for(var j = 0; j < num_cols; j++)
-            {
-                table_string += "<td>";
-                table_string += " IMG ";
-                table_string += "</td>"
-            }
-            table_string += "</tr>";
+            user = (i*num_cols) + j;
+            if (user >= window.users.length) break;
+            u = window.users[user];
+            console.log(u)
+            table_string += "<td>";
+            table_string += "<img src='scraped_pics/"+u.uid+".jpg'>";
+            table_string += "</td>"
         }
-        table_string += "</table>";
-        $('body').prepend(table_string);
+        table_string += "</tr>";
+    }
+    table_string += "</table>";
+    $('body').prepend(table_string);
   $(document).click(function(e) {
       var img = $('#heart_img')[0];
       var canvas = $('<canvas/>')[0];
