@@ -1,1 +1,28 @@
-About to be awesome...
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Find yourself in DA heart!</title>
+    <script src="js/jquery-2.1.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+  </head>
+
+  <body>
+    <div class="centered">
+      <image id="heart_img" src="heart.png" />
+    </div>
+    <script>
+      $(function() {
+        $(document).click(function(e) {
+            var img = $('#heart_img')[0];
+            var canvas = $('<canvas/>')[0];
+            canvas.width = img.width;
+            canvas.height = img.height;
+            canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
+            var pixelData = canvas.getContext('2d').getImageData(event.offsetX, event.offsetY, 1, 1).data;
+           console.log(pixelData);
+        });
+      });
+    </script>
+  </body>
+</html>
