@@ -3,3 +3,7 @@
   display: block;
   text-align: center;
 }
+
+#pic_table {
+	width: 100%;
+}
